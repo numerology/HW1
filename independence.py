@@ -23,5 +23,10 @@ levels[4] = len(list(df['d5'].unique()))
 # pairwise independence
 dm = df.as_matrix().reshape((10000,5))
 print(dm.shape[0],dm.shape[1])
-pair_score = g_square_dis(dm, 5, 1, [],levels)
-print(pair_score)
+for i1 in range(0, 5):
+	for i2 in range(i1, 5):
+		if (i1 == i2):
+			continue
+		pair_score = g_square_dis(dm, i1, i2, [], levels)
+		print('p-value of var:' + str(i1) + ' and var:' + str(i2) + ' is: ' + str(pair_score))
+
